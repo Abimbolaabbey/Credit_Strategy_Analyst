@@ -1,0 +1,4 @@
+risk_band,Count_Of_Customers,MAX(date)
+High,204,9/14/2025
+Low,1158,10/30/2025
+Medium,438,10/6/2025
