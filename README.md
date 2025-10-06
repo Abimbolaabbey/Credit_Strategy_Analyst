@@ -3,7 +3,7 @@
 
 ## Dataset Overview
 
-# Kindly note that the table nmae was changed to "Loan_Snapshot_Cleaned" for my Analysis.
+# Kindly note that the table name was changed to "Loan_Snapshot_Cleaned" for my Analysis.
  
 
 1. # Aggregation: 
