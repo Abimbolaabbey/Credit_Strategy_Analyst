@@ -1,8 +1,8 @@
-# Credit_Strategy_Analyst
-Assessment
+## Credit_Strategy_Analyst
+#Assessment
 
 
-Dataset Overview
+##Dataset Overview
 
 All queries use the table Loan_Snapshot_Cleaned, which contains daily loan-level snapshots with fields like:
 
@@ -118,7 +118,7 @@ These are customers who fully repaid their loans within 60 days.
 
 
 6. ## Trend Question: 
-○ # For a given customer, calculate the day-by-day change in cumulative_paid 
+○# For a given customer, calculate the day-by-day change in cumulative_paid 
 (hint: use LAG() in SQL).
 
 SELECT
