@@ -48,7 +48,7 @@ Filters for customers at or after day 60 to see their cumulative repayment and i
 
 
 2. ## Utilization Analysis: 
-○ #Find the average utilization (%) across all customers on the final day
+○ # Find the average utilization (%) across all customers on the final day
 
 SELECT customer_id,AVG(utilization_pct) AS Avg_Utilization_Final_Day
 FROM Loan_Snapshot_Cleaned
