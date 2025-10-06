@@ -20,8 +20,8 @@ Column
 | `cumulative_paid`      | Total amount paid (principal + interest)   |
  
 
-1. ## Aggregation: 
- # Write a query to calculate the total cumulative repayment and cumulative interest for each customer after 60 days.
+1. # Aggregation: 
+ ## Write a query to calculate the total cumulative repayment and cumulative interest for each customer after 60 days.
 
 WITH loan_days AS (
     SELECT 
@@ -47,8 +47,8 @@ The julianday() function computes the difference between dates.
 Filters for customers at or after day 60 to see their cumulative repayment and interest status.
 
 
-2. ## Utilization Analysis: 
- # Find the average utilization (%) across all customers on the final day
+2. # Utilization Analysis: 
+ ## Find the average utilization (%) across all customers on the final day
 
 SELECT customer_id,AVG(utilization_pct) AS Avg_Utilization_Final_Day
 FROM Loan_Snapshot_Cleaned
@@ -72,8 +72,8 @@ Query (a) computes the average utilization rate.
 Query (b) presents each customer’s utilization percentage.
 
 
-3. ## Arrears Tracking: 
- # For each customer, return the maximum days_in_arrears observed over the 
+3. # Arrears Tracking: 
+ ## For each customer, return the maximum days_in_arrears observed over the 
 60-day period
 
 SELECT customer_id,MAX(days_in_arrears)
@@ -86,8 +86,8 @@ Finds the maximum number of days each customer has been in arrears during the ob
 This is useful for identifying customers with the worst delinquency behavior.
   
 
-4. ## Risk Segmentation: 
- # Count the number of customers in each risk_band on the final day.
+4. # Risk Segmentation: 
+ ## Count the number of customers in each risk_band on the final day.
 
 
 SELECT risk_band,COUNT(customer_id) AS Count_Of_Customers,MAX(date)
@@ -101,8 +101,8 @@ Counts how many fall in each category.
 Uses MAX(date) to confirm it’s the latest available data.
 
 
-5. ## Cohort Question: 
- # How many customers had outstanding_balance = 0 by day 60 (i.e., fully paid 
+5. # Cohort Question: 
+ ## How many customers had outstanding_balance = 0 by day 60 (i.e., fully paid 
 off)?
 
 SELECT customer_id,COUNT(customer_id) AS Fully_Paid
@@ -117,8 +117,8 @@ Identifies customers with zero outstanding balance by the final snapshot.
 These are customers who fully repaid their loans within 60 days.
 
 
-6. ## Trend Question: 
-# For a given customer, calculate the day-by-day change in cumulative_paid 
+6. # Trend Question: 
+## For a given customer, calculate the day-by-day change in cumulative_paid 
 (hint: use LAG() in SQL).
 
 SELECT
