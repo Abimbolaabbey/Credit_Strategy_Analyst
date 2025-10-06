@@ -61,8 +61,7 @@ Query (b) presents each customer’s utilization percentage.
 
 
 3. # Arrears Tracking: 
- ## For each customer, return the maximum days_in_arrears observed over the 
-60-day period
+ ## For each customer, return the maximum days_in_arrears observed over the 60-day period
 ```sql
 SELECT customer_id,MAX(days_in_arrears)
   FROM Loan_Snapshot_Cleaned
@@ -90,8 +89,7 @@ Uses MAX(date) to confirm it’s the latest available data.
 
 
 5. # Cohort Question: 
- ## How many customers had outstanding_balance = 0 by day 60 (i.e., fully paid 
-off)?
+ ## How many customers had outstanding_balance = 0 by day 60 (i.e., fully paid off)?
 ```sql
 SELECT customer_id,COUNT(customer_id) AS Fully_Paid
 FROM Loan_Snapshot_Cleaned
@@ -106,8 +104,7 @@ These are customers who fully repaid their loans within 60 days.
 
 
 6. # Trend Question: 
-## For a given customer, calculate the day-by-day change in cumulative_paid 
-(hint: use LAG() in SQL).
+## For a given customer, calculate the day-by-day change in cumulative_paid (hint: use LAG() in SQL).
 ```sql
 SELECT
     customer_id,
