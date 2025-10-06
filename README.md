@@ -3,20 +3,7 @@
 
 ## Dataset Overview
 
-All queries use the table Loan_Snapshot_Cleaned, which contains daily loan-level snapshots with fields like:
-
-Column
-| Column                 | Description                                |
-| ---------------------- | ------------------------------------------ |
-| `customer_id`          | Unique customer identifier                 |
-| `date`                 | Snapshot date                              |
-| `cumulative_repayment` | Total repayment made by that date          |
-| `cumulative_interest`  | Total interest accrued by that date        |
-| `utilization_pct`      | Utilization percentage of the credit limit |
-| `days_in_arrears`      | Number of days a customer is overdue       |
-| `risk_band`            | Customer risk rating (Low, Medium, High)   |
-| `outstanding_balance`  | Remaining loan balance                     |
-| `cumulative_paid`      | Total amount paid (principal + interest)   |
+# Kindly note that the table nmae was changed to "Loan_Snapshot_Cleaned" for my Analysis.
  
 
 1. # Aggregation: 
@@ -39,7 +26,7 @@ FROM loan_days
 WHERE day_number >= 60;
 
 
-This query:
+Explanation:
 
 Uses a CTE (loan_days) to calculate how many days have passed since each customer's first record.
 The julianday() function computes the difference between dates.
@@ -133,4 +120,71 @@ Explanation:
 Uses the LAG() window function to look back at the previous day’s cumulative_paid value.
 Calculates the daily change (i.e., how much more was paid each day).
 Useful for spotting repayment patterns — e.g., large one-time payments vs steady payments.
+
+
+
+## Assessment_2
+
+# Statistics & Data Interpretation
+
+1. Looking at utilization (%), how would you measure which customers are progressing
+fastest in repaying their loans?
+
+
+# Solution:
+Utilization (%) = Outstanding Balance ÷ Loan Amount × 100
+
+As customers repay, utilization (%) decreases over time.
+
+While faster repayment leads to steeper decline in utilization.
+
+I will measure Slope of Utilization Over Time (Regression Approach)
+
+For each customer, I will fit a simple linear regression:
+Utilization (%) and Time (days)
+
+This slope tells me how quickly utilization is dropping, While more negative slope = faster repayment.
+
+
+
+2. ## If a customer’s cumulative interest / cumulative repayment ratio is high, what does
+that tell you about their repayment structure?
+
+# Solution:
+What this means is that large share of the borrower’s repayments is going toward interest and not principal.
+Or Low Principal reduction.
+
+
+3. ## Suggest a way to visualize repayment performance for all customers over time (line
+chart, cohort chart, etc.).
+
+# Solution:
+I would use a Line Chart (Individual + Portfolio Trend)
+
+X-axis = Time (days or months)
+
+Y-axis = Average utilization (%)
+
+with an average portfolio line to show repayment trajectories.
+
+
+
+4. ## If we had thousands of customers, how would you identify outliers in repayment
+behavior?
+
+# Solution:
+
+With thousands of customers, I would use a combination of statistical thresholds and clustering. 
+For example, I would calculate repayment speed and utilization trends, then flag customers in the extreme percentiles 
+or those whose repayment patterns deviate significantly from their peer group. 
+This way, i can quickly identify both high-risk slow payers and unusual fast payers without manually scanning every account.
+
+
+5. ## What metric from this dataset would you use to evaluate portfolio risk over time?
+
+# Solution:
+
+From this dataset, I would evaluate portfolio risk over time using DPD buckets and Portfolio at Risk (PAR). 
+Tracking how much of the outstanding balance moves into >30, >60, past due buckets gives a clear view of delinquency trends and default risk. 
+I would also complement this with utilization trends to see whether customers are meaningfully reducing their balances or just servicing interest.
 
