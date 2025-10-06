@@ -1,8 +1,8 @@
 ## Credit_Strategy_Analyst
-#Assessment
+# Assessment
 
 
-##Dataset Overview
+## Dataset Overview
 
 All queries use the table Loan_Snapshot_Cleaned, which contains daily loan-level snapshots with fields like:
 
