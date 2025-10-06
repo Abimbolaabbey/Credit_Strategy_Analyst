@@ -21,7 +21,7 @@ Column
  
 
 1. ## Aggregation: 
-○ # Write a query to calculate the total cumulative repayment and cumulative interest for each customer after 60 days.
+ # Write a query to calculate the total cumulative repayment and cumulative interest for each customer after 60 days.
 
 WITH loan_days AS (
     SELECT 
@@ -48,7 +48,7 @@ Filters for customers at or after day 60 to see their cumulative repayment and i
 
 
 2. ## Utilization Analysis: 
-○ # Find the average utilization (%) across all customers on the final day
+ # Find the average utilization (%) across all customers on the final day
 
 SELECT customer_id,AVG(utilization_pct) AS Avg_Utilization_Final_Day
 FROM Loan_Snapshot_Cleaned
@@ -73,7 +73,7 @@ Query (b) presents each customer’s utilization percentage.
 
 
 3. ## Arrears Tracking: 
-○ # For each customer, return the maximum days_in_arrears observed over the 
+ # For each customer, return the maximum days_in_arrears observed over the 
 60-day period
 
 SELECT customer_id,MAX(days_in_arrears)
@@ -87,7 +87,7 @@ This is useful for identifying customers with the worst delinquency behavior.
   
 
 4. ## Risk Segmentation: 
-○ # Count the number of customers in each risk_band on the final day.
+ # Count the number of customers in each risk_band on the final day.
 
 
 SELECT risk_band,COUNT(customer_id) AS Count_Of_Customers,MAX(date)
@@ -102,7 +102,7 @@ Uses MAX(date) to confirm it’s the latest available data.
 
 
 5. ## Cohort Question: 
-○ # How many customers had outstanding_balance = 0 by day 60 (i.e., fully paid 
+ # How many customers had outstanding_balance = 0 by day 60 (i.e., fully paid 
 off)?
 
 SELECT customer_id,COUNT(customer_id) AS Fully_Paid
@@ -118,7 +118,7 @@ These are customers who fully repaid their loans within 60 days.
 
 
 6. ## Trend Question: 
-○# For a given customer, calculate the day-by-day change in cumulative_paid 
+# For a given customer, calculate the day-by-day change in cumulative_paid 
 (hint: use LAG() in SQL).
 
 SELECT
